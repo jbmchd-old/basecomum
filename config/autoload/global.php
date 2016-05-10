@@ -20,6 +20,7 @@ return array(
                 'home','acesso/login', 'acesso/logout'
             ],
             'auth' => [
+                //tambem pode ser um array ex: [ 'modulo' => 'Pessoas', 'nome' => 'Pessoas' ],
                 'entity' => 'usuario',
                 'campo_usuario' => 'usr_login',
                 'campo_senha' => 'usr_senha',

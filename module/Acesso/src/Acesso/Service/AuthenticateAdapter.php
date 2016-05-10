@@ -48,7 +48,14 @@ class AuthenticateAdapter extends \Nucleo\Service\GenericService implements Adap
      * @return Result
      */
     public function authenticate() {
-        $srv_usuario = $this->getEntity('Acesso', ucfirst(strtolower($this->configAuth['entity'])));
+        $module = 'Acesso';
+        $entity = $entity = $this->configAuth['entity'];
+        if(is_array($this->configAuth['entity'])){
+            $module = $this->configAuth['entity']['modulo'];
+            $entity = $this->configAuth['entity']['nome'];
+        }
+        
+        $srv_usuario = $this->getEntity($module, $entity);
         $this->nomeCampoLogin = implode('', explode(' ', ucwords(str_replace('_', ' ',$this->configAuth['campo_usuario']))));
         $this->nomeCampoSenha = implode('', explode(' ', ucwords(str_replace('_', ' ',$this->configAuth['campo_senha']))));
         
@@ -58,7 +65,7 @@ class AuthenticateAdapter extends \Nucleo\Service\GenericService implements Adap
         if( is_object($user) ){
             $user = $user->toArray();
             unset($user[$this->configAuth['campo_senha']]);
-            return new Result(Result::SUCCESS, array('user'=>$user), array('OK'));
+            return new Result(Result::SUCCESS, array('usuario'=>$user), array('OK'));
         }
         else {
             return new Result(Result::FAILURE_CREDENTIAL_INVALID, null, array('user'=>$user));

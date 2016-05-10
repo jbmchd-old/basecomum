@@ -79,14 +79,14 @@ class Module
         } else if ( ! $authenticateService->hasIdentity()  ){
             return $controller->redirect()->toRoute("acesso/logout");
         } else {
-            $user = $authenticateService->getIdentity()['usuario'];
+            $user = $authenticateService->getIdentity();
             $this->confirmaAutorizacao($controller, $user);
         }
 
     }
     
     private function confirmaAutorizacao($controller, $user_name){
-        
+        return true;
         $controlador = $controller->params()->fromRoute('controller');
         $action      = $controller->params()->fromRoute('action');
         

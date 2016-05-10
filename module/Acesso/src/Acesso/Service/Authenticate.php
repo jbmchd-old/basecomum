@@ -98,7 +98,7 @@ class Authenticate extends GenericService {
         $result = $this->authenticateService->authenticate($this->authenticateAdapter);
         
         if ($result->isValid()) {
-            $identity = $result->getIdentity()['user'];
+            $identity = $result->getIdentity()['usuario'];
             $this->escreveSessao($identity);
             return $identity;
         } else {
