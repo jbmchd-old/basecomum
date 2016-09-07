@@ -9,6 +9,7 @@ use Nucleo\Controller\ControllerGenerico;
 class AuthenticateController extends ControllerGenerico {
 
     public function loginAction() {
+
         $request = $this->getRequest();
         $retorno = [];
 
@@ -25,13 +26,13 @@ class AuthenticateController extends ControllerGenerico {
                 return $this->redirect()->toRoute('acesso/login');
             }
             
-            echo '<pre>';
-            print_r('logado');
-            die();
+            return $this->redirect()->toRoute('acesso/logado');
             
         }
     }
 
+    public function logadoAction() {}
+    
     public function logoutAction($redirect = true) {
         $autenticaService = $this->app()->getService('Authenticate');
         $autenticaService->destroiSessao();

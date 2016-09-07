@@ -23,7 +23,7 @@ class Module
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         
-        $this->config = $e->getApplication()->getConfig()['modules-config']['acesso'];
+        $this->config = $e->getApplication()->getConfig()['app-config-acesso'];
     }
 
     public function getConfig()
@@ -80,22 +80,8 @@ class Module
             return $controller->redirect()->toRoute("acesso/logout");
         } else {
             $user = $authenticateService->getIdentity();
-            $this->confirmaAutorizacao($controller, $user);
         }
 
-    }
-    
-    private function confirmaAutorizacao($controller, $user_name){
-        return true;
-        $controlador = $controller->params()->fromRoute('controller');
-        $action      = $controller->params()->fromRoute('action');
-        
-        $autorizacao = new \Acesso\Service\Autorizacao( $em );  
-        $esta_autorizado = $autorizacao->temAcesso($controlador, $action, $user);
-        if ( ! $esta_autorizado ) {
-            return $controller->redirect()->toRoute("acesso/nao-autorizado", array('controlador' => $controlador, 'acao' => $action));
-        }
-        return true;
     }
     
 }

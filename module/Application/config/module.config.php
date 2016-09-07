@@ -10,6 +10,9 @@
 namespace Application;
 
 return array(
+//    'module_layouts' => [
+//        'Application' => 'layout/padrao',
+//    ],
     'router' => array(
         'routes' => array(
             'home' => array(

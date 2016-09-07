@@ -16,7 +16,7 @@ class Authenticate extends GenericService {
      * 
      * @var string $nomeSession
      */
-    private $nomeSession = "DPC";
+    private $nomeSession = "APP";
 
     /**
      * Objeto que contem os metodo para trabalhar com sessao
@@ -45,7 +45,7 @@ class Authenticate extends GenericService {
      */
     public function __construct(\ZeDb\DatabaseManager $em) {
         parent::__construct($em);
-        $this->configSession = $em->get('config')['modules-config']['acesso']['session'];
+        $this->configSession = $em->get('config')['app-config-acesso']['session'];
         $this->nomeSession = $this->configSession['owner-config']['nome'];
 
         $this->setAuthenticateAdapter( new \Acesso\Service\AuthenticateAdapter($em) );

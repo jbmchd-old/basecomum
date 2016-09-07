@@ -24,7 +24,7 @@ class AuthenticateAdapter extends \Nucleo\Service\GenericService implements Adap
 
     public function __construct(\ZeDb\DatabaseManager $em ) {
         $this->em = $em;
-        $this->configAuth = $em->get('config')['modules-config']['acesso']['auth'];        
+        $this->configAuth = $em->get('config')['app-config-acesso']['auth'];        
     }
  
     public function getLogin() {

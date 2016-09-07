@@ -3,6 +3,9 @@
 namespace Testes;
 
 return array(
+//    'module_layouts' => [
+//        'Testes' => 'layout/padrao',
+//    ],
     'router' => array(
         'routes' => array(
             'testes' => array(

@@ -1,35 +1,17 @@
 <?php
 
 return array(
-    'modules-config' => [
-        'global' => [
-            'session' => [
-                'owner-config' => [
-                    'nome' => 'nucleo',
-                ],
-                'zend-config' => [
-                    'name'=>'nucleo',
-                    'remember_me_seconds' => 60, //limite segundos
-                    'use_cookies' => true,
-                    'cookie_httponly' => true,
-                ]
+    'app-config-global' => [
+        'session' => [
+            'owner-config' => [
+                'nome' => 'nucleo',
             ],
-        ],
-        'acesso' => [
-            'free-routes' => [ 
-                'home','acesso/login', 'acesso/logout'
-            ],
-            'auth' => [
-                //tambem pode ser um array ex: [ 'modulo' => 'Pessoas', 'nome' => 'Pessoas' ],
-                'entity' => 'usuario',
-                'campo_usuario' => 'usr_login',
-                'campo_senha' => 'usr_senha',
-            ],
-            'session' => [
-                'owner-config' => [
-                    'nome' => 'acesso',
-                ],
-            ],
+            'zend-config' => [
+                'name'=>'nucleo',
+                'remember_me_seconds' => 60, //limite segundos
+                'use_cookies' => true,
+                'cookie_httponly' => true,
+            ]
         ],
     ],
     'module_layouts' => [

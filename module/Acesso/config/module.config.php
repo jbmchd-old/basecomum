@@ -3,7 +3,25 @@
 namespace Acesso;
 
 return array(
-    
+//    'module_layouts' => [
+//        'Acesso' => 'layout/padrao',
+//    ],
+    'app-config-acesso' => [
+        'free-routes' => [ 
+            'home','acesso/login', 'acesso/logout'
+        ],
+        'auth' => [
+            //tambem pode ser um array ex: [ 'modulo' => 'Pessoas', 'nome' => 'Pessoas' ],
+            'entity' => 'Usuario',
+            'campo_usuario' => 'usr_login',
+            'campo_senha' => 'usr_senha', // deve ser SHA1
+        ],
+        'session' => [
+            'owner-config' => [
+                'nome' => 'acesso',
+            ],
+        ],
+    ],
     'router' => array(
         'routes' => array(
             'acesso' => array(
@@ -43,6 +61,20 @@ return array(
                             'defaults' => array(
                                 'controller'    => 'Acesso\Controller\Authenticate',
                                 'action'        => 'login',
+                            ),
+                        ),
+                    ),
+                    'logado' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/logado',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                'controller'    => 'Acesso\Controller\Authenticate',
+                                'action'        => 'logado',
                             ),
                         ),
                     ),
